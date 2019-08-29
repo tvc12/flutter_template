@@ -9,6 +9,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^0.1.2
+  flutter_bloc: ^0.21.0
+  t_core:
+    path: t_core
 
 dev_dependencies:
   flutter_test:
