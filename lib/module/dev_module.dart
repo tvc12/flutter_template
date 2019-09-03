@@ -1,5 +1,5 @@
-export 'package:ddi/di.dart';
 import 'package:ddi/module.dart';
+export 'package:ddi/di.dart';
 
 class DevModule extends AbstractModule {
   @override

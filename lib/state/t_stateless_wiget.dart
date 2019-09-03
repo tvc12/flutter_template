@@ -3,12 +3,12 @@ import 'package:flutter/widgets.dart';
 
 abstract class TStatelessWidget extends StatelessWidget {
   Future<T> navigateToScreen<T>({
-    @required context,
+    @required BuildContext context,
     @required Widget screen,
     String screenName,
   }) {
     return Navigator.of(context).push<T>(
-      MaterialPageRoute(
+      MaterialPageRoute<T>(
         builder: (_) => screen,
         settings: screenName != null ? RouteSettings(name: screenName) : null,
       ),

@@ -6,7 +6,7 @@ abstract class TStatefulWidget extends StatefulWidget {
   const TStatefulWidget({Key key}) : super(key: key);
 
   @override
-  TState createState();
+  TState<TStatefulWidget> createState();
 }
 
 abstract class TState<T extends StatefulWidget> extends State<T> {
@@ -41,9 +41,9 @@ abstract class TState<T extends StatefulWidget> extends State<T> {
     Navigator.of(buildContext).popUntil(ModalRoute.withName(screenName));
   }
 
-  Future<T> navigateToScreen<T>({@required Widget screen, String screenName}) {
-    return Navigator.of(context).push<T>(
-      MaterialPageRoute(
+  Future<V> navigateToScreen<V>({@required Widget screen, String screenName}) {
+    return Navigator.of(context).push<V>(
+       MaterialPageRoute<V>(
         builder: (_) => screen,
         settings: screenName != null ? RouteSettings(name: screenName) : null,
       ),
