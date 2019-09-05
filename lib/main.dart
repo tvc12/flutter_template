@@ -6,13 +6,14 @@ import 'package:ddi/module.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_template/bloc_delegate.dart';
-import 'package:flutter_template/module/dev_module.dart';
+import 'package:flutter_template/module/t_module.dart';
 import 'package:t_core/t_core.dart';
+
 
 void main() {
   if (kReleaseMode) {
     Config.init(Mode.Production);
-    DI.init(<Module>[DevModule()]);
+    DI.init(<Module>[ProdModule()]);
   } else {
     Config.init(Mode.Debug);
     DI.init(<Module>[DevModule()]);
