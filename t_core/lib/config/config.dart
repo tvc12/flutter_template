@@ -5,11 +5,11 @@ enum Mode { Debug, Production }
 
 class Config {
   static const Map<String, dynamic> _debug = {
-    'api_host': '',
+    'api_host': 'https://reqres.in',
   };
 
   static const Map<String, dynamic> _production = {
-    'api_host': '',
+    'api_host': 'https://reqres.in',
   };
 
   static RemoteConfig _config;
@@ -22,23 +22,23 @@ class Config {
     }
   }
 
-  int getInt(String key) {
+  static int getInt(String key) {
     return _config.getInt(key);
   }
 
-  String getString(String key) {
+  static String getString(String key) {
     return _config.getString(key);
   }
 
-  double getDouble(String key) {
+  static double getDouble(String key) {
     return _config.getDouble(key);
   }
 
-  bool getBool(String key) {
+  static bool getBool(String key) {
     return _config.getBool(key);
   }
 
-  Map<String, dynamic> getAll() {
+  static Map<String, dynamic> getAll() {
     return _config.getAll();
   }
 }
