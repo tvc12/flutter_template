@@ -4,11 +4,11 @@ import 'package:t_core/config/remote_config.dart';
 enum Mode { Debug, Production }
 
 class Config {
-  static const Map<String, dynamic> _debug = {
+  static const Map<String, dynamic> _debug = <String, dynamic>{
     'api_host': 'https://reqres.in',
   };
 
-  static const Map<String, dynamic> _production = {
+  static const Map<String, dynamic> _production = <String, dynamic>{
     'api_host': 'https://reqres.in',
   };
 

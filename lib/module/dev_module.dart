@@ -21,6 +21,6 @@ class DevModule extends AbstractModule {
       },
     );
     Dio dio = Dio(baseOption);
-    return HttpClient(dio);
+    return HttpClient.init(dio);
   }
 }

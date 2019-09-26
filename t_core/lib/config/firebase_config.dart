@@ -11,11 +11,11 @@ class FireBaseRemoteConfig extends RemoteConfig {
   void _init() async {
     try {
       _conf = await frc.RemoteConfig.instance;
-      _conf.setDefaults(this.defaultValue ?? <String, dynamic>{});
-      _conf.fetch(expiration: Duration(hours: 1));
+      await _conf.setDefaults(this.defaultValue ?? <String, dynamic>{});
+      await _conf.fetch(expiration: Duration(hours: 1));
       await _conf.activateFetched();
       _conf.addListener(() {
-        getAll().forEach((key, value) {
+        getAll().forEach((String key, dynamic value) {
           Log.error("Key: " + key + " Value: " + value.toString());
         });
       });
