@@ -43,7 +43,7 @@ abstract class TState<T extends StatefulWidget> extends State<T> {
 
   Future<V> navigateToScreen<V>({@required Widget screen, String screenName}) {
     return Navigator.of(context).push<V>(
-       MaterialPageRoute<V>(
+      MaterialPageRoute<V>(
         builder: (_) => screen,
         settings: screenName != null ? RouteSettings(name: screenName) : null,
       ),

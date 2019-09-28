@@ -1,4 +1,3 @@
-import 'package:t_core/config/firebase_config.dart';
 import 'package:t_core/config/remote_config.dart';
 
 enum Mode { Debug, Production }
@@ -14,11 +13,14 @@ class Config {
 
   static RemoteConfig _config;
 
-  static void init(Mode mode) {
+  static Future<void> initAsync(Mode mode) async {
     if (Mode.Debug == mode) {
       _config = RemoteConfig(_debug);
     } else {
-      _config = FireBaseRemoteConfig(_production);
+      return _production;
+      // final FireBaseRemoteConfig fireBaseConfig =
+          // FireBaseRemoteConfig(_production);
+      // return fireBaseConfig.init().whenComplete(() => _config = fireBaseConfig);
     }
   }
 

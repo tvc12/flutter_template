@@ -8,11 +8,16 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  equatable: ^0.5.1
   cupertino_icons: ^0.1.2
   flutter_bloc: ^0.21.0
-  ddi: ^0.1.1
+  ddi: any
   t_core:
     path: t_core
+
+dependency_overrides:
+  ddi:
+    path: packages/di
 
 dev_dependencies:
   flutter_driver:

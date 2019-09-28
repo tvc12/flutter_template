@@ -55,7 +55,7 @@ class HttpClient {
   }
 
   FutureOr<T> _handleResult<T>(Response<dynamic> response) {
-    return Future<T>.value(response as T);
+    return Future<T>.value(null);
     // try{
     //   Map<String,dynamic> json = jsonDecode(response.data);
     //   if(!json['success']) {

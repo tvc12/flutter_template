@@ -1,12 +1,13 @@
 import 'dart:io';
 
-import 'package:ddi/module.dart';
+import 'package:ddi/di.dart';
 import 'package:t_core/t_core.dart';
 import 'package:dio/dio.dart';
+export 'package:ddi/ddi.dart';
 
 class DevModule extends AbstractModule {
   @override
-  void init() {
+  void init() async {
     bind('dio_client').to(_buildClient());
     // bind(Login)
   }
