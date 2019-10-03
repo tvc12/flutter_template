@@ -1,16 +1,54 @@
-# flutter_template
+## Flutter Template
 
-A new Flutter project.
+A Flutter example project with material component
 
-## Getting Started
+![GitHub](https://img.shields.io/github/license/tvc12/flutter_template.svg)
+[![HitCount](http://hits.dwyl.io/tvc/flutter_template.svg)](http://hits.dwyl.io/tvc/flutter_template)
 
-This project is a starting point for a Flutter application.
+### Feature
 
-A few resources to get you started if this is your first Flutter project:
++ [ ] Firebase
+    + [x] Remote config
+    + [x] Crashlytics
+    + [ ] Deeplink
++ [x] Logger
++ [ ] Cache
+    + [ ] Image
++ [x] Bloc
++ [x] Dependency injection
++ [x] Init Async
++ [x] Test
+    + [x] Test driver
++ [x] Linter [See more](http://dart-lang.github.io/linter/lints)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Getting Started
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+This is a boilerplate for flutter mobile application with bloc
+
+- Clone this project:
+
+```bash
+git clone https://github.com/tvc12/flutter_template
+cd flutter_template
+```
+
+- Get packages from **pub** for Flutter app:
+
+```bash
+flutter packages get
+```
+
+- Run project:
+
+```bash
+flutter run
+```
+
+### Sreenshoots
+
+
+### Contributors
+
+| [![Thien Chi Vi](https://github.com/tvc12.png?size=100)](https://github.com/tvc12) | 
+| :---: |
+| [Thien Chi Vi](https://github.com/tvc12) | 
