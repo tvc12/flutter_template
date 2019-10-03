@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_template/flutter_template.dart';
 
@@ -7,7 +8,11 @@ void main() {
   final MainAppBloc bloc = MainAppBloc();
   initAsync(bloc);
   handleError();
-  runApp(buildApp(bloc));
+  runZoned(() {
+    runApp(buildApp(bloc));
+  }, onError: (dynamic ex, dynamic trace) {
+    Crashlytics.instance.recordError(ex, trace);
+  });
 }
 
 void initAsync(MainAppBloc bloc) {
@@ -17,13 +22,12 @@ void initAsync(MainAppBloc bloc) {
 
   Config.initAsync(mode)
       .then((_) => DI.initAsync(modules))
-      .then((_) => bloc.dispatch(CompletedInitMainAppEvent()))
-      .catchError((dynamic ex) => Log.error(ex));
+      .catchError((dynamic ex) => Log.error(ex))
+      .whenComplete(() => bloc.dispatch(CompletedInitMainAppEvent()));
 }
 
 void handleError() {
   FlutterError.onError = (FlutterErrorDetails error) {
-    Log.error(error);
     FlutterError.dumpErrorToConsole(error);
     Zone.current.handleUncaughtError(error.exception, error.stack);
   };
