@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter_template/login/bloc/bloc.dart';
 
 ///------------------------------------------------
 /// `Event` for main app
@@ -48,6 +49,8 @@ class CompletedInitMainAppState extends MainAppState {
 ///------------------------------------------------
 
 class MainAppBloc extends Bloc<MainAppEvent, MainAppState> {
+  final AuthenticationBloc authBloc = AuthenticationBloc();
+
   @override
   MainAppState get initialState => InitMainAppState();
 
@@ -58,6 +61,7 @@ class MainAppBloc extends Bloc<MainAppEvent, MainAppState> {
         yield InitMainAppState();
         break;
       case CompletedInitMainAppEvent:
+        authBloc.init();
         yield CompletedInitMainAppState();
         break;
       default:

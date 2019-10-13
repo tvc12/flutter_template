@@ -37,58 +37,10 @@ void handleError() {
 }
 
 Widget buildApp(MainAppBloc bloc) {
-  final Widget child = blocBuilder(buildMainApp(), bloc);
   return MaterialApp(
     home: BlocProvider<MainAppBloc>(
       builder: (_) => bloc,
-      child: child,
-    ),
-  );
-}
-
-Widget blocBuilder(Widget child, MainAppBloc bloc) {
-  return BlocBuilder<MainAppBloc, MainAppState>(
-    bloc: bloc,
-    builder: (_, MainAppState state) {
-      switch (state.runtimeType) {
-        case InitMainAppState:
-          return buildSplashScreen();
-          break;
-        case CompletedInitMainAppState:
-          return child;
-        default:
-          return child;
-      }
-    },
-  );
-}
-
-Widget buildSplashScreen() {
-  return Scaffold(
-    backgroundColor: TColors.white,
-    body: Center(
-      child: Text(
-        'Slash Screen',
-        style: TTextStyles.bold(
-          fontSize: 150,
-          color: TColors.green,
-        ),
-      ),
-    ),
-  );
-}
-
-Widget buildMainApp() {
-  return Scaffold(
-    backgroundColor: TColors.white,
-    body: Center(
-      child: Text(
-        'Main Screen',
-        style: TTextStyles.bold(
-          fontSize: 150,
-          color: TColors.black,
-        ),
-      ),
+      child: MainAppSceen(bloc: bloc),
     ),
   );
 }
