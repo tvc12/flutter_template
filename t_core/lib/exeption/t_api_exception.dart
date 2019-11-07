@@ -1,5 +1,4 @@
-import 'package:flutter/cupertino.dart';
-import 'package:t_core/exeption/t_exeption.dart';
+part of t_core.exception;
 
 @immutable
 class TApiExecption extends TExeption {

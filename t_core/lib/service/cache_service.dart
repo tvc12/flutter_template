@@ -1,7 +1,4 @@
-import 'dart:io';
-
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:path/path.dart' as path;
+part of t_core.service;
 
 class TCacheService extends BaseCacheManager {
   final Directory dictionary;

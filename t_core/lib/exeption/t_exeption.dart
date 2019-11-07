@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+part of t_core.exception;
 
 @immutable
 class TExeption implements Exception {

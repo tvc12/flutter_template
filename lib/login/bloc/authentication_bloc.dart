@@ -1,6 +1,5 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_template/flutter_template.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthenticationEvent extends Equatable {
   @override
@@ -12,8 +11,7 @@ abstract class AuthenticationState extends Equatable {
   String toString() => 'AuthenticationState';
 }
 
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   bool _isInited = false;
   String _token;
 

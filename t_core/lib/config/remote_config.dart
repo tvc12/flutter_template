@@ -1,3 +1,5 @@
+part of t_core.config;
+
 class RemoteConfig {
   Map<String, dynamic> defaultValue;
 

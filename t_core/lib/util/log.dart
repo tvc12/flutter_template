@@ -1,3 +1,5 @@
+library t_core.util;
+
 import 'package:flutter/foundation.dart';
 
 class Log {
