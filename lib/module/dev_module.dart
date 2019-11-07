@@ -72,7 +72,7 @@ class DevModule extends AbstractModule {
 
   StorageService _buildStorageService() {
     final SharedPreferences shared =
-        DI.get<SharedPreferences>(SharedPreferences);
+        this.get<SharedPreferences>(SharedPreferences);
     return StorageServiceImpl(shared);
   }
 }

@@ -6,8 +6,7 @@ import 'package:flutter_template/login/bloc/bloc.dart';
 /// `Event` for main app
 ///------------------------------------------------
 abstract class MainAppEvent extends Equatable {
-  MainAppEvent([List<dynamic> props = const <dynamic>[]])
-      : super(<dynamic>[props]);
+  MainAppEvent([List<dynamic> props = const <dynamic>[]]) : super(<dynamic>[props]);
 
   @override
   String toString() => 'MainAppEvent';
@@ -27,8 +26,7 @@ class CompletedInitMainAppEvent extends MainAppEvent {
 /// State for main app
 ///------------------------------------------------
 abstract class MainAppState extends Equatable {
-  MainAppState([List<dynamic> props = const <dynamic>[]])
-      : super(<dynamic>[props]);
+  MainAppState([List<dynamic> props = const <dynamic>[]]) : super(<dynamic>[props]);
 
   @override
   String toString() => 'MainAppState';
