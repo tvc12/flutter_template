@@ -1,4 +1,4 @@
-import 'package:flutter_template/flutter_template.dart';
+import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   @override
