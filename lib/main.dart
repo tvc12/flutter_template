@@ -19,7 +19,8 @@ void main() {
 void initAsync(MainAppBloc bloc) async {
   await Future<void>.delayed(const Duration(seconds: 2));
   final Mode mode = kReleaseMode ? Mode.Production : Mode.Debug;
-  final List<Module> modules = kReleaseMode ? <Module>[ProdModule()] : <Module>[DevModule()];
+  final List<Module> modules =
+      kReleaseMode ? <Module>[ProdModuleCore(), ProdModule()] : <Module>[DevModuleCore(), DevModule()];
 
   Config.initAsync(mode)
       .then((_) => DI.initAsync(modules))

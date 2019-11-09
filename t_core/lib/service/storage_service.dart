@@ -6,22 +6,17 @@ abstract class StorageService {
 }
 
 class StorageServiceImpl implements StorageService {
-  final SharedPreferences shared;
+  final StorageRepository repository;
 
-  StorageServiceImpl(this.shared);
+  StorageServiceImpl(this.repository);
 
   @override
   String getToken() {
-    return shared.getString(_StorageKeys.token);
+    return repository.getToken();
   }
 
   @override
   Future<bool> saveToken(String value) {
-    return shared.setString(_StorageKeys.token, value);
+    return repository.saveToken(value);
   }
-}
-
-/// Key get value
-abstract class _StorageKeys {
-  static const String token = 'token_user';
 }

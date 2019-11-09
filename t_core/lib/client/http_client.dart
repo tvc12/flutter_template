@@ -11,17 +11,17 @@ class HttpClient {
   static Options _getOptions(Options options) =>
       options is Options ? options : Options(responseType: ResponseType.plain);
 
-  Future<T> get<T>(String path, {Map<String, dynamic> params, Options options}) {
+  Future<Map<String, dynamic>> get(String path, {Map<String, dynamic> params, Options options}) {
     return _dio
-        .get<T>(path, queryParameters: _getParams(params), options: _getOptions(options))
+        .get<String>(path, queryParameters: _getParams(params), options: _getOptions(options))
         .then(_handleResult)
         .catchError((dynamic e) => _handleError(path, e));
   }
 
-  Future<T> post<T>(String path, dynamic body,
+  Future<Map<String, dynamic>> post(String path, dynamic body,
       {Map<String, dynamic> params, ProgressCallback onSendProgress, Options options}) {
     return _dio
-        .post<T>(path,
+        .post<String>(path,
             data: body,
             queryParameters: _getParams(params),
             onSendProgress: onSendProgress,
@@ -30,47 +30,46 @@ class HttpClient {
         .catchError((dynamic e) => _handleError(path, e));
   }
 
-  Future<T> put<T>(String path, dynamic body, {Options options}) {
+  Future<Map<String, dynamic>> put(String path, dynamic body, {Options options}) {
     return _dio
-        .put<T>(path, data: body, options: _getOptions(options))
+        .put<String>(path, data: body, options: _getOptions(options))
         .then(_handleResult)
         .catchError((dynamic e) => _handleError(path, e));
   }
 
-  Future<T> delete<T>(String path, {Options options}) {
+  Future<Map<String, dynamic>> delete<T>(String path, {Options options}) {
     return _dio
-        .delete<T>(path, options: _getOptions(options))
+        .delete<String>(path, options: _getOptions(options))
         .then(_handleResult)
         .catchError((dynamic e) => _handleError(path, e));
   }
 
-  FutureOr<T> _handleResult<T>(Response<dynamic> response) {
-    return Future<T>.value(null);
-    // try{
-    //   Map<String,dynamic> json = jsonDecode(response.data);
-    //   if(!json['success']) {
-    //     throw new XedAPIException.fromJson(json['error']);
-    //   }
-    //   return json['data'];
-    // }on XedAPIException catch(e) {
-    //   throw e;
-    // }catch(e) {
-    //   throw XedAPIException.from(e);
-    // }
+  FutureOr<Map<String, dynamic>> _handleResult(Response<String> response) {
+    final String body = response.data;
+    return json.decode(body);
   }
 
-  void _handleError(String path, DioError e) {
+  void _handleError(String path, dynamic ex) {
+    Log.debug('path $path - ex: $ex');
+    if (ex is DioError) {
+      _handleDioError(path, ex);
+    } else if (ex is TApiExecption) {
+      throw ex;
+    } else {
+      _handleOtherException(path, ex);
+    }
+  }
+
+  void _handleDioError(String path, DioError ex) {
+    // parse error here
+  }
+
+  void _handleOtherException(String path, dynamic ex) {
     try {
-      Log.error('$path: $e');
-      if (e.response != null && e.response.data != null) {
-        Map<String, dynamic> jsonEx = json.decode(e.response.data);
-
-        throw TApiExecption.fromJson(jsonEx['error']);
-      } else {
-        // throw XedAPIException.from(e);
-      }
+      TExeption.fromException(ex);
     } catch (e) {
-      // throw TExecption.fromJson();
+      Log.error(e);
+      throw ex;
     }
   }
 }
