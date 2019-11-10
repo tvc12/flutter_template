@@ -67,6 +67,6 @@ class _TTextStyle extends TextStyle implements TTextStyles {
           fontWeight: fontWeight,
           fontSize: fontSize ?? 14,
           color: color ?? TColors.black,
-          fontFamily: FontFamilies.harmonia,
+          fontFamily: FontFamilies.sarabun,
         );
 }
